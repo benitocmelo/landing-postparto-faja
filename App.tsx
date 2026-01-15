@@ -1,6 +1,4 @@
-
 import React, { useState, useEffect, useRef } from 'react';
-/* Added ChevronLeft to the imports from lucide-react */
 import { Play, Check, Star, ShieldCheck, X, ChevronRight, ChevronLeft, Lock, ArrowRight, ArrowLeft, Plus, Minus, Instagram, Award, Clock, AlertTriangle, ArrowDown, FileText, Shield, Zap, CheckCircle2, Medal, Heart, Users } from 'lucide-react';
 
 // --- Assets ---
@@ -18,8 +16,8 @@ const TESTIMONIAL_IMAGES = [
 
 const TESTIMONIAL_VIDEOS = [
   "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/1(2).mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vMSgyKS5tcDQiLCJpYXQiOjE3NjgwODUwOTcsImV4cCI6MTc5OTYyMTA5N30.NA_WhqUQzAyJQbUkwJKgpj1HxmjYxjgXkLreC4UJBws",
-  "https://erxxuotslhjluwrlxmyx.supabaseco/storage/v1/object/sign/LANDING%20POST%20PARTO/2(2).mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vMigyKS5tcDQiLCJpYXQiOjE3NjgwODUxMDgsImV4cCI6MTc5OTYyMTEwOH0.U6IBOLa9j9jN4rCGRi9Ley9SxK36PZixTzBKvx5Iv-Q",
-  "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/3(2).mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vMygyKS5tcDQiLCJpYXQiOjE3NjgwODUxMzEsImV4cCI6MTc5OTYyMTEzMX0.2OqJtkUvxAjeD0qSrV130J2q6FSVDxAN_Qhzc_JyGzE",
+  "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/2(2).mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vMigyKS5tcDQiLCJpYXQiOjE3NjgwODUxMDgsImV4cCI6MTc5OTYyMTEwOH0.U6IBOLa9j9jN4rCGRi9Ley9SxK36PZixTzBKvx5Iv-Q",
+  "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/3(2).mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vMygyKS5tcDQiLCJpYXQiOjE3Njg0OTk0ODMsImV4cCI6MTgwMDAzNTQ4M30.jD3jWNMyrKN6bv1mpEWT5VCVlrYVQtkiClVlioHl0SM",
   "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/4(2).mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vNCgyKS5tcDQiLCJpYXQiOjE3NjgwODUxMzEsImV4cCI6MTc5OTYyMTEzMX0.xqmwWzyf3mdPLInaUFrTplNTPmLCbTGAvu10Ibn1GXw"
 ];
 
@@ -142,7 +140,6 @@ const LandingPage: React.FC<{ onNavigate: (v: string) => void }> = ({ onNavigate
       {/* HERO */}
       <section className="px-5 pt-12 pb-12 text-center max-w-md mx-auto">
         <Badge text="Método Científico · 21 Días" />
-        {/* Título ajustado: interlineado aumentado y espaciado normal para evitar amontonamiento */}
         <h1 className="text-2xl xs:text-[1.75rem] sm:text-3xl font-bold leading-[1.3] text-sage-900 mb-6 tracking-normal break-words">
           ¿Tu abdomen <span className="animate-gradient bg-gradient-to-r from-lime-600 via-lime-400 to-lime-600 bg-clip-text text-transparent italic font-black">sigue abultado</span> como si estuvieras embarazada?
         </h1>
@@ -163,31 +160,59 @@ const LandingPage: React.FC<{ onNavigate: (v: string) => void }> = ({ onNavigate
         </div>
       </section>
 
-      {/* BLOQUE PROBLEMA: COMPARACIÓN */}
-      <section className="px-5 py-16 bg-white rounded-t-[3rem] shadow-xl w-full max-w-md mx-auto relative z-20">
-        <div className="text-center mb-10">
-          <span className="inline-block py-1 px-3 rounded-full bg-red-50 text-red-600 text-[9px] font-black tracking-widest uppercase mb-3 border border-red-100">ALERTA MÉDICA</span>
-          <h2 className="text-2xl font-bold leading-[1.3] tracking-normal text-sage-900">POR QUÉ TU ABDOMEN <br/><span className="text-gray-400">SIGUE AHÍ</span></h2>
+      {/* BLOQUE PROBLEMA: COMPARACIÓN REDISEÑADO CON TITULO IMPACTANTE */}
+      <section className="px-5 py-20 bg-white rounded-t-[3.5rem] shadow-2xl w-full max-w-md mx-auto relative z-20 overflow-hidden">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-full -mr-16 -mt-16 opacity-50"></div>
+        
+        <div className="text-center mb-12 relative z-10">
+          <div className="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-red-600 text-white text-[10px] font-black tracking-[0.2em] uppercase mb-5 shadow-lg shadow-red-200 animate-[bounce_3s_infinite]">
+             <AlertTriangle size={12} /> ALERTA MÉDICA
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-bold leading-tight tracking-normal text-sage-900">
+            ¿POR QUÉ TU VIENTRE <br/>
+            <span className="relative inline-block mt-2">
+              <span className="relative z-10 text-red-600 italic font-black text-3xl sm:text-4xl">SIGUE ABULTADO?</span>
+              <span className="absolute -bottom-1 left-0 w-full h-3 bg-red-100 -rotate-1 z-0 rounded-full"></span>
+            </span>
+          </h2>
         </div>
 
-        <div className="space-y-6">
-           <div className="rounded-3xl border-2 border-red-50 bg-white overflow-hidden shadow-sm">
-              <div className="h-40 bg-red-50/50 flex items-center justify-center p-4">
-                 <img src="https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/Captura%20de%20pantalla%202026-01-10%20233122.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vQ2FwdHVyYSBkZSBwYW50YWxsYSAyMDI2LTAxLTEwIDIzMzEyMi5wbmciLCJpYXQiOjE3NjgxMDY0NTAsImV4cCI6MTc5OTY0MjQ1MH0.moLDJnxEP1NHUkHGTn1mXJuLNeQK5wiNoa_N8bp7z00" className="h-full object-contain grayscale" />
+        <div className="space-y-8 relative z-10">
+           {/* CASO INCORRECTO */}
+           <div className="group relative rounded-[2.5rem] border-2 border-red-100 bg-white p-2 shadow-xl shadow-red-500/5 transition-all active:scale-95">
+              <div className="h-56 bg-gradient-to-b from-red-50/50 to-white rounded-[2rem] flex flex-col items-center justify-center p-6 overflow-hidden relative">
+                 <img 
+                    src="https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/Captura%20de%20pantalla%202026-01-10%20233122.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vQ2FwdHVyYSBkZSBwYW50YWxsYSAyMDI2LTAxLTEwIDIzMzEyMi5wbmciLCJpYXQiOjE3NjgxMDY0NTAsImV4cCI6MTc5OTY0MjQ1MH0.moLDJnxEP1NHUkHGTn1mXJuLNeQK5wiNoa_N8bp7z00" 
+                    className="h-full object-contain grayscale opacity-60 transition-all group-hover:grayscale-0 group-hover:opacity-100" 
+                    alt="Efecto Globo"
+                 />
+                 <div className="absolute top-4 left-4 bg-red-600 text-white text-[9px] font-black px-3 py-1 rounded-full shadow-lg">EL ERROR</div>
               </div>
-              <div className="p-5">
-                 <h3 className="font-bold text-red-600 text-base mb-1">❌ El Efecto "Globo"</h3>
-                 <p className="text-gray-500 text-xs leading-relaxed">Los abdominales clásicos empujan tus órganos hacia afuera, abriendo más tu diástasis.</p>
+              <div className="p-6">
+                 <div className="flex items-center gap-2 mb-2 text-red-600">
+                    <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center"><X size={14} strokeWidth={3} /></div>
+                    <h3 className="font-black text-lg uppercase tracking-tight">Efecto "Globo"</h3>
+                 </div>
+                 <p className="text-gray-600 text-[13px] leading-relaxed font-medium">Los abdominales tradicionales <b>empujan tus órganos hacia afuera</b>, debilitando el suelo pélvico y haciendo que tu tripa se vea más grande.</p>
               </div>
            </div>
 
-           <div className="rounded-3xl border-2 border-lime-400 bg-white overflow-hidden shadow-lg shadow-lime-400/10">
-              <div className="h-40 bg-lime-50/50 flex items-center justify-center p-4">
-                 <img src="https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/Gemini_Generated_Image_5k1nde5k1nde5k1n.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vR2VtaW5pX0dlbmVyYXRlZF9JbWFnZV81azFuZGU1azFuZGU1azFuLnBuZyIsImlhdCI6MTc2ODEwNTk3NiwiZXhwIjoxNzk5NjQxOTc2fQ.rpa2YPL_wd8qJxEKj0ExqTIPT0kHiONkEzDW8bQz2X4" className="h-full object-contain" />
+           {/* CASO CORRECTO */}
+           <div className="group relative rounded-[2.5rem] border-2 border-lime-400 bg-white p-2 shadow-2xl shadow-lime-500/20 transition-all active:scale-95">
+              <div className="h-56 bg-gradient-to-b from-lime-50/80 to-white rounded-[2rem] flex flex-col items-center justify-center p-6 overflow-hidden relative">
+                 <img 
+                    src="https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/Gemini_Generated_Image_5k1nde5k1nde5k1n.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vR2VtaW5pX0dlbmVyYXRlZF9JbWFnZV81azFuZGU1azFuZGU1azFuLnBuZyIsImlhdCI6MTc2ODEwNTk3NiwiZXhwIjoxNzk5NjQxOTc2fQ.rpa2YPL_wd8qJxEKj0ExqTIPT0kHiONkEzDW8bQz2X4" 
+                    className="h-full object-contain transition-transform group-hover:scale-105" 
+                    alt="Efecto Corset"
+                 />
+                 <div className="absolute top-4 right-4 bg-lime-500 text-white text-[9px] font-black px-3 py-1 rounded-full shadow-lg">EL MÉTODO</div>
               </div>
-              <div className="p-5">
-                 <h3 className="font-bold text-sage-900 text-base mb-1">✅ El Efecto "Corset"</h3>
-                 <p className="text-gray-500 text-xs leading-relaxed">La técnica Hipopresiva succiona tus órganos hacia adentro, uniendo las paredes abdominales.</p>
+              <div className="p-6">
+                 <div className="flex items-center gap-2 mb-2 text-sage-900">
+                    <div className="w-6 h-6 rounded-full bg-lime-500 flex items-center justify-center text-white ring-4 ring-lime-100"><Check size={14} strokeWidth={3} /></div>
+                    <h3 className="font-black text-lg uppercase tracking-tight">Efecto "Corset"</h3>
+                 </div>
+                 <p className="text-gray-600 text-[13px] leading-relaxed font-medium">Los hipopresivos crean una <b>succión interna</b> que une los músculos de nuevo, "recolocando" tu abdomen y reduciendo centímetros en días.</p>
               </div>
            </div>
         </div>
@@ -224,7 +249,7 @@ const LandingPage: React.FC<{ onNavigate: (v: string) => void }> = ({ onNavigate
         </div>
       </section>
 
-      {/* RESULTADOS */}
+      {/* RESULTADOS EN IMAGEN */}
       <section className="py-16 bg-white overflow-hidden">
         <h2 className="text-xl font-bold px-5 mb-10 text-center tracking-normal uppercase text-sage-900">CASOS DE ÉXITO VERIFICADOS</h2>
         <Carousel autoPlay={true}>
@@ -235,6 +260,43 @@ const LandingPage: React.FC<{ onNavigate: (v: string) => void }> = ({ onNavigate
                  <div className="absolute top-4 right-4 bg-lime-400 text-sage-900 text-[8px] font-black px-3 py-1.5 rounded-full shadow-lg border-2 border-white uppercase tracking-tight">CASO REAL</div>
               </div>
             </div>
+          ))}
+        </Carousel>
+      </section>
+
+      {/* TESTIMONIOS EN VIDEO (SOCIAL PROOF) - LINK 3 CORREGIDO */}
+      <section className="py-16 bg-sage-900 text-white overflow-hidden">
+        <div className="px-5 max-w-md mx-auto mb-10">
+           <div className="flex items-center gap-2 mb-3">
+             <Star size={14} className="fill-lime-400 text-lime-400" />
+             <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-white/60">Comunidad VIP</span>
+           </div>
+           <h2 className="text-2xl font-bold tracking-normal leading-tight">ELLAS YA LO <br/> <span className="text-lime-400 italic">LOGRARON</span></h2>
+        </div>
+
+        <Carousel autoPlay={false}>
+          {TESTIMONIAL_VIDEOS.map((src, idx) => (
+             <div key={idx} className="flex-shrink-0 w-[240px] snap-center">
+               <div className="relative aspect-[9/16] rounded-[2.5rem] overflow-hidden bg-black border border-white/10 shadow-2xl">
+                 <video 
+                   key={idx}
+                   className="w-full h-full object-cover" 
+                   controls 
+                   playsInline
+                   preload="metadata"
+                 >
+                   <source src={src} type="video/mp4" />
+                 </video>
+                 {/* Overlay decorativo */}
+                 <div className="absolute bottom-12 left-6 right-6 p-4 bg-black/40 backdrop-blur-md rounded-2xl border border-white/5 pointer-events-none">
+                    <div className="flex items-center gap-2 text-lime-400 mb-1">
+                       <CheckCircle2 size={12} />
+                       <span className="text-[8px] font-black uppercase tracking-widest">Alumna Verificada</span>
+                    </div>
+                    <div className="w-12 h-1 bg-lime-400 rounded-full"></div>
+                 </div>
+               </div>
+             </div>
           ))}
         </Carousel>
       </section>
