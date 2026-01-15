@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Play, Check, Star, ShieldCheck, X, ChevronRight, ChevronLeft, Lock, ArrowRight, ArrowLeft, Plus, Minus, Instagram, Award, Clock, AlertTriangle, ArrowDown, FileText, Shield, Zap, CheckCircle2, Medal, Heart, Users } from 'lucide-react';
+import { Play, Check, Star, ShieldCheck, X, ChevronRight, ChevronLeft, Lock, ArrowRight, ArrowLeft, Plus, Minus, Instagram, Award, Clock, AlertTriangle, ArrowDown, FileText, Shield, Zap, CheckCircle2, Medal, Heart, Users, Quote } from 'lucide-react';
 
 // --- Assets ---
 const VSL_URL = "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/VSL_POST_PARTO.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vVlNMX1BPU1RfUEFSVE8ubXA0IiwiaWF0IjoxNzY4MDg1NDIxLCJleHAiOjE3OTk2MjE0MjF9.qeLRDt57HU_vY6e66-V1fhAq4e0saLazMgzvxEEifpQ";
@@ -19,6 +19,14 @@ const TESTIMONIAL_VIDEOS = [
   "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/2(2).mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vMigyKS5tcDQiLCJpYXQiOjE3NjgwODUxMDgsImV4cCI6MTc5OTYyMTEwOH0.U6IBOLa9j9jN4rCGRi9Ley9SxK36PZixTzBKvx5Iv-Q",
   "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/3(2).mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vMygyKS5tcDQiLCJpYXQiOjE3Njg0OTk0ODMsImV4cCI6MTgwMDAzNTQ4M30.jD3jWNMyrKN6bv1mpEWT5VCVlrYVQtkiClVlioHl0SM",
   "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/4(2).mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vNCgyKS5tcDQiLCJpYXQiOjE3NjgwODUxMzEsImV4cCI6MTc5OTYyMTEzMX0.xqmwWzyf3mdPLInaUFrTplNTPmLCbTGAvu10Ibn1GXw"
+];
+
+const DETAILED_TESTIMONIALS = [
+  { name: "Lucía M.", text: "Odiaba verme al espejo y seguir pareciendo embarazada de 5 meses. ¡En 2 semanas mi abdomen bajó muchísimo!", pain: "Autoimagen" },
+  { name: "Elena G.", text: "El dolor de espalda por cargar a mi bebé era insoportable. Los hipopresivos me salvaron la vida.", pain: "Dolor Físico" },
+  { name: "Mariana R.", text: "Pensé que mis jeans favoritos jamás volverían a cerrarme. ¡Hoy me quedan mejor que antes!", pain: "Logro" },
+  { name: "Sofía V.", text: "Tenía miedo de estornudar por las fugas de orina. Gracias Natalia, por devolverme mi seguridad.", pain: "Suelo Pélvico" },
+  { name: "Carla P.", text: "Probé mil dietas y nada quitaba el bulto. Solo necesitaba cerrar mi diástasis. ¡Funciona!", pain: "Frustración" }
 ];
 
 const FAQS = [
@@ -44,6 +52,57 @@ const Badge = ({ text }: { text: string }) => (
   <div className="inline-flex items-center px-3 py-1 rounded-full bg-lime-400/20 border border-lime-400/40 text-sage-900 text-[10px] font-bold uppercase tracking-wider mb-4">
     <span className="w-2 h-2 rounded-full bg-lime-500 mr-2 animate-pulse"></span>
     {text}
+  </div>
+);
+
+const AvatarStack = () => (
+  <div className="flex flex-col items-center gap-4 py-4">
+    <div className="flex -space-x-3 overflow-hidden">
+      {[...Array(5)].map((_, i) => (
+        <img
+          key={i}
+          className="inline-block h-10 w-10 rounded-full ring-2 ring-cream object-cover"
+          src={TESTIMONIAL_IMAGES[i % TESTIMONIAL_IMAGES.length]}
+          alt={`Mamá ${i + 1}`}
+        />
+      ))}
+      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-lime-400 ring-2 ring-cream text-[10px] font-black text-sage-900">
+        +2K
+      </div>
+    </div>
+    <div className="flex items-center gap-2 text-[11px] font-bold text-sage-800 uppercase tracking-widest opacity-80">
+      <Users size={14} className="text-lime-600" /> 
+      <span>MÁS DE 2,400 MAMÁS UNIDAS</span>
+    </div>
+  </div>
+);
+
+const ReviewCard = ({ name, text }: { name: string, text: string }) => (
+  <div className="bg-white/5 border border-white/10 p-5 rounded-[2rem] w-[300px] shrink-0 flex flex-col gap-3 shadow-xl backdrop-blur-md">
+    <div className="flex items-center justify-between">
+      <span className="text-lime-400 text-[10px] font-black uppercase tracking-[0.2em]">{name}</span>
+      <div className="flex gap-0.5">
+        {[...Array(5)].map((_, i) => <Star key={i} size={10} className="fill-lime-400 text-lime-400" />)}
+      </div>
+    </div>
+    <p className="text-white text-xs leading-relaxed font-medium italic">"{text}"</p>
+    <div className="flex items-center gap-2 mt-1">
+      <div className="w-5 h-5 rounded-full bg-lime-400/20 flex items-center justify-center">
+        <CheckCircle2 size={10} className="text-lime-400" />
+      </div>
+      <span className="text-[8px] font-black text-white/40 uppercase tracking-widest">Alumna Verificada</span>
+    </div>
+  </div>
+);
+
+const MarqueeTestimonials = () => (
+  <div className="relative flex overflow-x-hidden bg-sage-900 py-12 border-y border-white/5">
+    <div className="animate-marquee-slow flex gap-8 px-8">
+      {/* Duplicamos exactamente 2 veces para un bucle perfecto con -50% translateX */}
+      {[...DETAILED_TESTIMONIALS, ...DETAILED_TESTIMONIALS].map((t, i) => (
+        <ReviewCard key={i} name={t.name} text={t.text} />
+      ))}
+    </div>
   </div>
 );
 
@@ -138,7 +197,7 @@ const LandingPage: React.FC<{ onNavigate: (v: string) => void }> = ({ onNavigate
   return (
     <div className="pb-24 overflow-x-hidden bg-cream">
       {/* HERO */}
-      <section className="px-5 pt-12 pb-12 text-center max-w-md mx-auto">
+      <section className="px-5 pt-12 pb-6 text-center max-w-md mx-auto">
         <Badge text="Método Científico · 21 Días" />
         <h1 className="text-2xl xs:text-[1.75rem] sm:text-3xl font-bold leading-[1.3] text-sage-900 mb-6 tracking-normal break-words">
           ¿Tu abdomen <span className="animate-gradient bg-gradient-to-r from-lime-600 via-lime-400 to-lime-600 bg-clip-text text-transparent italic font-black">sigue abultado</span> como si estuvieras embarazada?
@@ -153,15 +212,14 @@ const LandingPage: React.FC<{ onNavigate: (v: string) => void }> = ({ onNavigate
           </video>
         </div>
 
-        <div className="flex flex-col items-center gap-2">
-           <div className="flex items-center gap-1 text-[10px] font-bold text-sage-800 uppercase tracking-widest opacity-60">
-             <Users size={12} /> Más de 2,400 mamás unidas
-           </div>
-        </div>
+        <AvatarStack />
       </section>
 
+      {/* BARRA DE TESTIMONIOS DETALLADOS (MÁS LENTA) */}
+      <MarqueeTestimonials />
+
       {/* BLOQUE PROBLEMA: COMPARACIÓN REDISEÑADO CON TITULO IMPACTANTE */}
-      <section className="px-5 py-20 bg-white rounded-t-[3.5rem] shadow-2xl w-full max-w-md mx-auto relative z-20 overflow-hidden">
+      <section className="px-5 py-20 bg-white rounded-t-[3.5rem] shadow-2xl w-full max-w-md mx-auto relative z-20 overflow-hidden mt-8">
         <div className="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-full -mr-16 -mt-16 opacity-50"></div>
         
         <div className="text-center mb-12 relative z-10">
@@ -170,11 +228,12 @@ const LandingPage: React.FC<{ onNavigate: (v: string) => void }> = ({ onNavigate
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold leading-tight tracking-normal text-sage-900">
             ¿POR QUÉ TU VIENTRE <br/>
-            <span className="relative inline-block mt-2">
-              <span className="relative z-10 text-red-600 italic font-black text-3xl sm:text-4xl">SIGUE ABULTADO?</span>
-              <span className="absolute -bottom-1 left-0 w-full h-3 bg-red-100 -rotate-1 z-0 rounded-full"></span>
+            <span className="relative inline-block mt-4">
+              <span className="relative z-10 text-red-600 italic font-black text-3xl sm:text-4xl px-2">SIGUE ABULTADO?</span>
+              <span className="absolute -bottom-2 left-0 w-full h-4 bg-red-100/80 -rotate-1 z-0 rounded-sm"></span>
             </span>
           </h2>
+          <p className="text-[10px] text-gray-400 mt-6 font-bold uppercase tracking-widest">Incluso si haces ejercicio a diario</p>
         </div>
 
         <div className="space-y-8 relative z-10">
@@ -193,7 +252,7 @@ const LandingPage: React.FC<{ onNavigate: (v: string) => void }> = ({ onNavigate
                     <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center"><X size={14} strokeWidth={3} /></div>
                     <h3 className="font-black text-lg uppercase tracking-tight">Efecto "Globo"</h3>
                  </div>
-                 <p className="text-gray-600 text-[13px] leading-relaxed font-medium">Los abdominales tradicionales <b>empujan tus órganos hacia afuera</b>, debilitando el suelo pélvico y haciendo que tu tripa se vea más grande.</p>
+                 <p className="text-gray-600 text-[13px] leading-relaxed font-medium">Los abdominales tradicionales <b>empujan tus órganos hacia afuera</b>, debilitando el suelo pélvico y haciendo que tu tripa se vea más inflamada.</p>
               </div>
            </div>
 
@@ -212,7 +271,7 @@ const LandingPage: React.FC<{ onNavigate: (v: string) => void }> = ({ onNavigate
                     <div className="w-6 h-6 rounded-full bg-lime-500 flex items-center justify-center text-white ring-4 ring-lime-100"><Check size={14} strokeWidth={3} /></div>
                     <h3 className="font-black text-lg uppercase tracking-tight">Efecto "Corset"</h3>
                  </div>
-                 <p className="text-gray-600 text-[13px] leading-relaxed font-medium">Los hipopresivos crean una <b>succión interna</b> que une los músculos de nuevo, "recolocando" tu abdomen y reduciendo centímetros en días.</p>
+                 <p className="text-gray-600 text-[13px] leading-relaxed font-medium">Los hipopresivos crean una <b>succión interna</b> que une los músculos de nuevo, "recolocando" tu abdomen y desinflando tu figura en días.</p>
               </div>
            </div>
         </div>
@@ -264,7 +323,7 @@ const LandingPage: React.FC<{ onNavigate: (v: string) => void }> = ({ onNavigate
         </Carousel>
       </section>
 
-      {/* TESTIMONIOS EN VIDEO (SOCIAL PROOF) - LINK 3 CORREGIDO */}
+      {/* TESTIMONIOS EN VIDEO (SOCIAL PROOF) */}
       <section className="py-16 bg-sage-900 text-white overflow-hidden">
         <div className="px-5 max-w-md mx-auto mb-10">
            <div className="flex items-center gap-2 mb-3">
