@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   Play, Check, Star, ShieldCheck, X, ChevronRight, ChevronLeft, Lock, ArrowLeft, 
@@ -11,11 +10,11 @@ import {
 
 const ASSETS = {
   vsl: "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/VSL_POST_PARTO.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vVlNMX1BPU1RfUEFSVE8ubXA0IiwiaWF0IjoxNzY4MDg1NDIxLCJleHAiOjE3OTk2MjE0MjF9.qeLRDt57HU_vY6e66-V1fhAq4e0saLazMgzvxEEifpQ",
-  author: "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/imgi_34_NATIS-REDES-1.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vaW1naV8zNF9OQVRJUy1SRURFUy0xLndlYnAiLCJpYXQiOjE3NjgwODY1NDEsImV4cCI6MTc5OTYyMjU0MX0.wL9x9lGURoTs4ZevVVTtuzyWuRpP3PNYURbDlv1P3-Y",
+  author: "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/imgi_34_NATIS-REDES-1.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vaW1naV8zNF9OQVRJUy1SRURFUy0xLndlYnAiLCJpYXQiOjE3Njg2MDY1MTcsImV4cCI6MTgwMDE0MjUxN30.pwm9fguWRTTo47VrSXyAbCPXw1kbjijaEYL5K7ITE88",
   mechanism: "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/94805f18-ea35-4300-a4c3-385cfa210778-ezgif.com-video-to-webp-converter.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vOTQ4MDVmMTgtZWEzNS00MzAwLWE0YzMtMzg1Y2ZhMjEwNzc4LWV6Z2lmLmNvbS12aWRlby10by13ZWJwLWNvbnZlcnRlci53ZWJwIiwiaWF0IjoxNzY4NjAzNTY1LCJleHAiOjE4MDAxMzk1NjV9.aTh4UUNW7_VvMsDfaH7PnvbpWlObjva257CRgkVxH1s",
-  errorState: "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/Captura%20de%20pantalla%202026-01-10%20233122.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vQ2FwdHVyYSBkZSBwYW50YWxsYSAyMDI2LTAxLTEwIDIzMzEyMi5wbmciLCJpYXQiOjE3NjgxMDY0NTAsImV4cCI6MTc5OTY0MjQ1MH0.moLDJnxEP1NHUkHGTn1mXJuLNeQK5wiNoa_N8bp7z00",
+  errorState: "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/Captura%20de%20pantalla%202026-01-10%20233122.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vQ2FwdHVyYSBkZSBwYW50YWxsYSAyMDI2LTAxLTEwIDIzMzEyMi5wbmciLCJpYXQiOjE3Njg2MDYxNDUsImV4cCI6MTgwMDE0MjE0NX0.I1SgQtVXDSwm-2GXa_qRcDFUUJrKWCooHf6hmGsXAc8",
   methodState: "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/Gemini_Generated_Image_5k1nde5k1nde5k1n.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vR2VtaW5pX0dlbmVyYXRlZF9JbWFnZV81azFuZGU1azFuZGU1azFuLnBuZyIsImlhdCI6MTc2ODEwNTk3NiwiZXhwIjoxNzk5NjQxOTc2fQ.rpa2YPL_wd8qJxEKj0ExqTIPT0kHiONkEzDW8bQz2X4",
-  paymentMethods: "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/Gemini_Generated_Image_b6fq97b6fq97b6fq-removebg-preview.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vR2VtaW5pX0dlbmVyYXRlZF9JbWFnZV8iNmZxOTdiNmZxOTdiNmZxLXJlbW92ZWJnLXByZXZpZXcucG5nIiwiaWF0IjoxNzY4NjA0ODMzLCJleHAiOjE4MDAxNDA4MzN9.NXScZVRSAA4zkAtXovbnHiVEKKTNvZSJuNa_5Hi_zvE",
+  paymentMethods: "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/Gemini_Generated_Image_b6fq97b6fq97b6fq-removebg-preview.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vR2VtaW5pX0dlbmVyYXRlZF9JbWFnZV9iNmZxOTdiNmZxOTdiNmZxLXJlbW92ZWJnLXByZXZpZXcucG5nIiwiaWF0IjoxNzY4NjA1Nzk0LCJleHAiOjE4MDAxNDE3OTR9.B6LJR4VDhEVm-urwr69yjLMAmrlPWw6XriZfUaduCrw",
   courseInside: [
     "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/curso%20por%20dentro.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vY3Vyc28gcG9yIGRlbnRyby5qcGciLCJpYXQiOjE3Njg1OTA0OTIsImV4cCI6MTgwMDEyNjQ5Mn0.h6wKoko3k4L_0H8i3mexXZ9iPRA43I2f3Wled2heHm8",
     "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/curso%20por%20dentro%202.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vY3Vyc28gcG9yIGRlbnRybyAyLmpwZyIsImlhdCI6MTc2ODU5MDY3OSwiZXhwIjoxODAwMTI2Njc5fQ.ctVZ_SK404ByMhx4RV6z9rPyij-RVC_6HVVTzgd_vBs",
@@ -61,7 +60,7 @@ const BONUSES = [
 const FAQS = [
   { q: "¿Tuve cesárea, puedo hacerlo?", a: "Sí, es ideal para recuperar la sensibilidad y sanar internamente, siempre con alta médica." },
   { q: "¿Sirve si mi parto fue hace años?", a: "Sí, la diástasis no se cierra sola con el tiempo, nunca es tarde para tratarla." },
-  { q: "¿Estoy lactando, afecta la leche?", a: "No, los hipopresivos mejoran la postura y circulación, beneficiando la lactancia." },
+  { q: "¿Estoy lactando, afecta la leche?", a: "No, los hipopresivos mejorar la postura y circulación, beneficiando la lactancia." },
   { q: "¿Cuánto tiempo necesito?", a: "Solo necesitas 15-20 minutos al día. Diseñado para mamás reales." }
 ];
 
@@ -217,7 +216,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* CIENCIA INVISIBLE - MECANISMO DE RECONEXIÓN (GIF REESTABLECIDO) */}
+      {/* CIENCIA INVISIBLE - MECANISMO DE RECONEXIÓN */}
       <section className="py-24 bg-cream px-5">
         <div className="max-w-md mx-auto text-center">
           <h2 className="text-3xl font-black mb-12 text-sage-900 uppercase font-clash">MECANISMO DE <br/> <span className="text-lime-600 italic">RECONEXIÓN</span></h2>
@@ -244,7 +243,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* BIBLIOTECA DE TRANSFORMACIONES (RESTAURADA) */}
+      {/* BIBLIOTECA DE TRANSFORMACIONES (6 IMÁGENES) */}
       <section className="py-24 bg-white overflow-hidden text-center">
         <h2 className="text-2xl font-black px-5 mb-12 uppercase tracking-tight font-clash leading-none text-center">BIBLIOTECA DE TRANSFORMACIONES</h2>
         <Carousel>
@@ -259,7 +258,7 @@ const App: React.FC = () => {
         </Carousel>
       </section>
 
-      {/* EXPLORA LA PLATAFORMA (6 IMÁGENES RESTAURADAS) */}
+      {/* EXPLORA LA PLATAFORMA */}
       <section className="py-32 bg-sage-900 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(132,204,22,0.1),transparent_50%)] pointer-events-none"></div>
         <div className="max-w-md mx-auto px-5 relative z-10 text-center">
@@ -289,7 +288,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* PACK DE BIENVENIDA VIP (AJUSTE DE DISEÑO PARA MÓVIL) */}
+      {/* PACK DE BIENVENIDA VIP */}
       <section className="py-24 px-5 bg-cream overflow-hidden">
         <div className="max-w-md mx-auto">
           <div className="text-center mb-16">
@@ -316,7 +315,6 @@ const App: React.FC = () => {
             ))}
           </div>
 
-          {/* AJUSTE FINAL DEL PACK DE BIENVENIDA VIP PARA CONTENCIÓN TOTAL */}
           <div className="relative group max-w-[340px] mx-auto overflow-visible">
             <div className="absolute -top-4 -left-1 text-lime-400 z-30 animate-bounce duration-1000"><Sparkles size={24} /></div>
             <div className="absolute -bottom-4 -right-1 text-lime-500 z-30 animate-pulse"><PartyPopper size={24} /></div>
@@ -392,7 +390,7 @@ const App: React.FC = () => {
                   <img 
                     src={ASSETS.paymentMethods} 
                     alt="Métodos de Pago" 
-                    className="w-full h-auto opacity-90" 
+                    className="w-full h-auto" 
                   />
                </div>
                <div className="flex gap-4 opacity-30 justify-center"><ShieldCheck size={20} /><Lock size={20} /></div>
@@ -446,33 +444,59 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* GARANTÍA */}
+      {/* GARANTÍA MEJORADA VISUALMENTE */}
       <section className="py-32 px-5 bg-sage-900 relative overflow-hidden text-center">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(132,204,22,0.1),transparent_70%)] pointer-events-none"></div>
         <div className="max-w-md mx-auto relative z-10">
-          <div className="mb-12 relative inline-block">
-             <div className="absolute inset-0 bg-lime-400 blur-3xl opacity-20 animate-pulse"></div>
-             <div className="relative w-32 h-32 mx-auto bg-gradient-to-br from-white/10 to-white/5 border-2 border-white/20 rounded-full backdrop-blur-xl flex flex-col items-center justify-center shadow-3xl">
-                <ShieldCheck size={48} className="text-lime-400 mb-1" />
-                <span className="text-[9px] text-white/40 font-black uppercase tracking-[0.3em]">SECURE</span>
-             </div>
-          </div>
-          <h2 className="text-4xl font-black text-white mb-8 uppercase font-clash leading-none tracking-tight">GARANTÍA DE <br/><span className="text-lime-400 italic">BLINDAJE TOTAL</span></h2>
-          <div className="relative bg-white/5 border-2 border-white/10 rounded-[4rem] p-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden">
-             <div className="absolute -top-6 -right-6 w-24 h-24 bg-lime-500 rounded-full flex items-center justify-center rotate-12 shadow-2xl border-4 border-sage-900 z-20">
-                <Star fill="currentColor" size={32} className="text-sage-900" />
-             </div>
-             <Quote className="text-lime-400/20 mb-8 mx-auto" size={60} />
-             <p className="text-white text-xl font-bold italic leading-relaxed mb-10 opacity-90 relative z-10">
-               "Prueba el método por 7 días completos. Si no sientes cambios reales o simplemente no es lo que esperabas, te devuelvo el 100% de tu dinero. Sin trámites, sin preguntas."
-             </p>
-             <div className="flex flex-col items-center gap-4">
-                <div className="h-px w-20 bg-white/20"></div>
-                <div className="flex items-center gap-3">
-                   <Lock size={14} className="text-lime-400" />
-                   <span className="text-[10px] text-lime-400 font-black tracking-widest uppercase">TRANSACCIÓN BLINDADA · RIESGO CERO</span>
-                </div>
-             </div>
+          <h2 className="text-4xl font-black text-white mb-12 uppercase font-clash leading-none tracking-tight drop-shadow-lg">GARANTÍA DE <br/><span className="text-lime-400 italic">BLINDAJE TOTAL</span></h2>
+          
+          <div className="relative">
+            {/* Sello de Garantía Flotante Premium */}
+            <div className="absolute -top-10 -right-4 w-32 h-32 z-30 pointer-events-none">
+              <div className="relative w-full h-full animate-[spin_12s_linear_infinite]">
+                 <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_10px_15px_rgba(132,204,22,0.4)]">
+                   <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+                   <text className="text-[9px] font-black fill-lime-400 uppercase tracking-[0.1em]">
+                     <textPath xlinkHref="#circlePath">Garantía Incondicional de Satisfacción • 7 Días de Prueba •</textPath>
+                   </text>
+                 </svg>
+              </div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-lime-400 rounded-full w-20 h-20 flex items-center justify-center border-4 border-sage-900 shadow-xl overflow-hidden group">
+                 <div className="flex flex-col items-center">
+                   <span className="text-[10px] font-black text-sage-900 leading-none">RETO</span>
+                   <span className="text-2xl font-black text-sage-900 leading-none tracking-tighter">7</span>
+                   <span className="text-[10px] font-black text-sage-900 leading-none">DÍAS</span>
+                 </div>
+                 <div className="absolute inset-0 bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              </div>
+            </div>
+
+            <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border-2 border-white/20 rounded-[4.5rem] p-10 md:p-14 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.6)] overflow-hidden group">
+               <div className="absolute -top-10 -left-10 w-40 h-40 bg-lime-400/10 blur-[60px] rounded-full pointer-events-none"></div>
+               <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-purple-500/10 blur-[60px] rounded-full pointer-events-none"></div>
+
+               <div className="mb-8 flex justify-center">
+                 <div className="bg-lime-400/10 p-4 rounded-full border border-lime-400/20">
+                   <ShieldCheck size={48} className="text-lime-400" />
+                 </div>
+               </div>
+
+               <Quote className="text-lime-400/10 mb-6 mx-auto" size={80} />
+               <p className="text-white text-lg md:text-xl font-bold italic leading-relaxed mb-10 opacity-95 relative z-10 font-clash">
+                 "Prueba el método por <span className="text-lime-400">7 días completos</span>. Si no sientes cambios reales o simplemente no es lo que esperabas, te devuelvo el <span className="text-lime-400">100% de tu dinero</span>. Sin trámites, sin preguntas."
+               </p>
+
+               <div className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-white/30 to-transparent mb-10"></div>
+               
+               <div className="flex flex-col items-center gap-4">
+                  <div className="flex items-center gap-3 bg-white/5 px-6 py-2.5 rounded-full border border-white/10 shadow-sm backdrop-blur-sm">
+                     <Lock size={14} className="text-lime-400" />
+                     <span className="text-[10px] text-white/70 font-black tracking-widest uppercase">TRANSACCIÓN BLINDADA · RIESGO CERO</span>
+                  </div>
+               </div>
+
+               <div className="absolute inset-0 pointer-events-none shimmer-effect opacity-[0.05]"></div>
+            </div>
           </div>
         </div>
       </section>
