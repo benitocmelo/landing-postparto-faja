@@ -29,7 +29,7 @@ const ASSETS = {
     "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/TESTIMONIO%203.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vVEVTVElNT05JTyAzLmpwZyIsImlhdCI6MTc2ODA4NTAwNCwiZXhwIjoxNzk5NjIxMDA0fQ.DoDFq8T9Sn7hYjN5eywaLJnFW6tw1G0eg5C9XbdRlK8",
     "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/TESTIMONIO%204.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vVEVTVElNT05JTyA0LmpwZyIsImlhdCI6MTc2ODA4NTAzMSwiZXhwIjoxNzk5NjIxMDMxfQ.-5FBi7tk747OXo2SnJvy6JnrYe_e92_58UpRlHMoSCI",
     "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/TESTIMONIO%205.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vVEVTVElNT05JTyA1LmpwZyIsImlhdCI6MTc2ODA4NTA1MywiZXhwIjoxNzk5NjIxMDUzfQ.KA2WoRlHW0BjLxCLhTSupITw2A6nTNeHfgtjhAC5w2Q",
-    "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/TESTIMONIO%207.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vVEVTVElNT05JTyA3LmpwZyIsImlhdCI6MTc2ODA4NTA2NywiZXhwIjoxNzk5NjIxMDY3fQ.pb7M9R43RtGfZYm2zjozr_lCPoE4aN5VRgSf9Od59uQ"
+    "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/TESTIMONIO%207.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vVEVTVElNT05JTyA7LmpwZyIsImlhdCI6MTc2ODA4NTA2NywiZXhwIjoxNzk5NjIxMDY3fQ.pb7M9R43RtGfZYm2zjozr_lCPoE4aN5VRgSf9Od59uQ"
   ],
   videoTestimonials: [
     "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/1(2).mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vMSgyKS5tcDQiLCJpYXQiOjE3NjgwODUwOTcsImV4cCI6MTc5OTYyMTA5N30.NA_WhqUQzAyJQbUkwJKgpj1HxmjYxjgXkLreC4UJBws",
@@ -115,6 +115,20 @@ const App: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleBuyClick = () => {
+    // @ts-ignore
+    if (typeof window.fbq === 'function') {
+      // @ts-ignore
+      window.fbq('track', 'AddToCart', {
+        content_name: 'Reto Posparto 21 Días',
+        value: 69.99,
+        currency: 'USD',
+        content_type: 'product'
+      });
+      console.log("🛒 Evento AddToCart enviado al Pixel");
+    }
+  };
 
   if (view !== 'landing') {
     return (
@@ -381,7 +395,11 @@ const App: React.FC = () => {
                 </div>
             </div>
             
-            <a href="https://go.hotmart.com/D102309348Q?ap=4cfb" className="group block w-full bg-gradient-to-r from-lime-400 to-lime-500 text-sage-900 font-black py-6 rounded-[2.5rem] text-xl shadow-2xl active:scale-95 transition-all uppercase font-clash shimmer-effect overflow-hidden relative mb-8">
+            <a 
+              href="https://go.hotmart.com/D102309348Q?ap=4cfb" 
+              onClick={handleBuyClick}
+              className="group block w-full bg-gradient-to-r from-lime-400 to-lime-500 text-sage-900 font-black py-6 rounded-[2.5rem] text-xl shadow-2xl active:scale-95 transition-all uppercase font-clash shimmer-effect overflow-hidden relative mb-8"
+            >
                ¡INSCRIBIRME AHORA!
             </a>
             
@@ -472,6 +490,7 @@ const App: React.FC = () => {
             </div>
 
             <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border-2 border-white/20 rounded-[4.5rem] p-10 md:p-14 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.6)] overflow-hidden group">
+               {/* Luces de fondo decorativas */}
                <div className="absolute -top-10 -left-10 w-40 h-40 bg-lime-400/10 blur-[60px] rounded-full pointer-events-none"></div>
                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-purple-500/10 blur-[60px] rounded-full pointer-events-none"></div>
 
@@ -529,6 +548,7 @@ const App: React.FC = () => {
           <div className="absolute inset-0 bg-lime-500/30 rounded-full blur-3xl animate-pulse -z-10"></div>
           <a 
             href="https://go.hotmart.com/D102309348Q?ap=4cfb" 
+            onClick={handleBuyClick}
             className="relative flex items-center justify-between px-10 py-5 bg-white/20 backdrop-blur-2xl border border-white/30 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.4)] group active:scale-95 transition-all overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-lime-400 to-lime-500 opacity-90 transition-opacity"></div>
