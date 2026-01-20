@@ -29,7 +29,7 @@ const ASSETS = {
     "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/TESTIMONIO%203.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vVEVTVElNT05JTyAzLmpwZyIsImlhdCI6MTc2ODA4NTAwNCwiZXhwIjoxNzk5NjIxMDA0fQ.DoDFq8T9Sn7hYjN5eywaLJnFW6tw1G0eg5C9XbdRlK8",
     "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/TESTIMONIO%204.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vVEVTVElNT05JTyA0LmpwZyIsImlhdCI6MTc2ODA4NTAzMSwiZXhwIjoxNzk5NjIxMDMxfQ.-5FBi7tk747OXo2SnJvy6JnrYe_e92_58UpRlHMoSCI",
     "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/TESTIMONIO%205.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vVEVTVElNT05JTyA1LmpwZyIsImlhdCI6MTc2ODA4NTA1MywiZXhwIjoxNzk5NjIxMDUzfQ.KA2WoRlHW0BjLxCLhTSupITw2A6nTNeHfgtjhAC5w2Q",
-    "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/TESTIMONIO%207.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vVEVTVElNT05JTyA7LmpwZyIsImlhdCI6MTc2ODA4NTA2NywiZXhwIjoxNzk5NjIxMDY3fQ.pb7M9R43RtGfZYm2zjozr_lCPoE4aN5VRgSf9Od59uQ"
+    "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/TESTIMONIO%207.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vVEVTVElNT05JTyA3LmpwZyIsImlhdCI6MTc2ODA4NTA2NywiZXhwIjoxNzk5NjIxMDY3fQ.pb7M9R43RtGfZYm2zjozr_lCPoE4aN5VRgSf9Od59uQ"
   ],
   videoTestimonials: [
     "https://erxxuotslhjluwrlxmyx.supabase.co/storage/v1/object/sign/LANDING%20POST%20PARTO/1(2).mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWQxZTBkNS1mNzcwLTRmMDMtODRhYy1jYTk2YzZkZmM1NDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJMQU5ESU5HIFBPU1QgUEFSVE8vMSgyKS5tcDQiLCJpYXQiOjE3NjgwODUwOTcsImV4cCI6MTc5OTYyMTA5N30.NA_WhqUQzAyJQbUkwJKgpj1HxmjYxjgXkLreC4UJBws",
@@ -122,7 +122,7 @@ const App: React.FC = () => {
       // @ts-ignore
       window.fbq('track', 'AddToCart', {
         content_name: 'Reto Posparto 21 Días',
-        value: 69.99,
+        value: 39.99,
         currency: 'USD',
         content_type: 'product'
       });
@@ -385,7 +385,7 @@ const App: React.FC = () => {
             <div className="bg-white/5 p-8 rounded-[3.5rem] border border-white/10 mb-10 flex flex-col items-center">
                 <p className="text-gray-500 line-through text-xs font-black uppercase mb-2 tracking-widest opacity-60">$197.00 USD</p>
                 <div className="flex flex-col items-center mb-6">
-                    <span className="text-7xl font-black text-white leading-none font-clash tracking-tighter animate-gradient bg-gradient-to-r from-white via-lime-400 to-white bg-clip-text text-transparent">$69.99</span>
+                    <span className="text-7xl font-black text-white leading-none font-clash tracking-tighter animate-gradient bg-gradient-to-r from-white via-lime-400 to-white bg-clip-text text-transparent">$39.99</span>
                     <span className="text-[9px] text-lime-400 font-bold tracking-[0.3em] mt-3 uppercase">PAGO ÚNICO VITALICIO</span>
                 </div>
                 <div className="w-full h-px bg-white/10 mb-6"></div>
@@ -396,7 +396,7 @@ const App: React.FC = () => {
             </div>
             
             <a 
-              href="https://go.hotmart.com/D102309348Q?ap=4cfb" 
+              href="https://go.hotmart.com/D102309348Q?ap=f6f4" 
               onClick={handleBuyClick}
               className="group block w-full bg-gradient-to-r from-lime-400 to-lime-500 text-sage-900 font-black py-6 rounded-[2.5rem] text-xl shadow-2xl active:scale-95 transition-all uppercase font-clash shimmer-effect overflow-hidden relative mb-8"
             >
@@ -547,7 +547,7 @@ const App: React.FC = () => {
         <div className="max-w-md mx-auto">
           <div className="absolute inset-0 bg-lime-500/30 rounded-full blur-3xl animate-pulse -z-10"></div>
           <a 
-            href="https://go.hotmart.com/D102309348Q?ap=4cfb" 
+            href="https://go.hotmart.com/D102309348Q?ap=f6f4" 
             onClick={handleBuyClick}
             className="relative flex items-center justify-between px-10 py-5 bg-white/20 backdrop-blur-2xl border border-white/30 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.4)] group active:scale-95 transition-all overflow-hidden"
           >
